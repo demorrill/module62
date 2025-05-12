@@ -23,7 +23,7 @@ jobs:
       run: echo "test=world" >> $GITHUB_OUTPUT
       env:
         MY_SECRET: ${{ secrets.SECRET1 }}
-        MY_VAR: ${{ vars.SECRET1 }}
+        MY_VAR: ${{ vars.dev }}
 
   my_second_job:
     name: My Second Job
@@ -41,4 +41,4 @@ jobs:
         echo "Output 2: $output2"
       env:
           MY_SECRET: ${{ secrets.SECRET1 }}
-          MY_VAR: ${{ vars.SECRET1 }}
+          MY_VAR: ${{ vars.dev }}
