@@ -10,7 +10,7 @@ jobs:
   my_first_job:
     name: My First Job
     runs-on: ubuntu-latest
-    environment: dev
+    environment: prod
     outputs:
 
       output1: ${{ steps.step1.outputs.test }}
@@ -23,13 +23,13 @@ jobs:
       run: echo "test=world" >> $GITHUB_OUTPUT
       env:
         MY_SECRET: ${{ secrets.SECRET1 }}
-        MY_VAR: ${{ vars.dev }}
+        MY_VAR: ${{ vars.VARIABLE1 }}
 
   my_second_job:
     name: My Second Job
     runs-on: ubuntu-latest
     needs: my_first_job  # This job will only run if the first job is successful
-    environment: dev
+    environment: prod
     steps:
     - run: |
         # Create local variables from job outputs
@@ -41,4 +41,4 @@ jobs:
         echo "Output 2: $output2"
       env:
           MY_SECRET: ${{ secrets.SECRET1 }}
-          MY_VAR: ${{ vars.dev }}
+          MY_VAR: ${{ vars.VARIABLE1 }}
